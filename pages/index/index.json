@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "TopicItem": "../../components/TopicItem/TopicItem"
+  },
+  "enablePullDownRefresh": true
+}
