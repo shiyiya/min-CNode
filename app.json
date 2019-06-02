@@ -28,9 +28,10 @@
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#444",
+    "navigationBarBackgroundColor": "#31aa74",
     "navigationBarTitleText": "min-CNode",
     "navigationBarTextStyle": "white"
   },
+ 
   "sitemapLocation": "sitemap.json"
 }

@@ -1,4 +1,5 @@
 import { _fetch, fetchTopics } from '../../utils/api'
+import { howLongAge } from '../../utils/util'
 
 const app = getApp()
 
@@ -22,18 +23,47 @@ Page({
       mdrender: true
     }
   },
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+  fetchTopics(replace) {
+    console.log('fet', this.data)
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 20000,
+      mask: true
     })
-  },
-  fetchTopics() {
     const { topics, topicsParams } = this.data
     return fetchTopics(topicsParams).then(res => {
-      this.setData({
-        topics: topics.concat(res.data)
+      const r = res.data.map(topic => {
+        topic.last_reply_at = howLongAge(new Date(topic.create_at))
+        return topic
       })
+      this.setData({
+        topics: replace ? r : topics.concat(r)
+      })
+      wx.hideToast({})
+      return r
     })
+  },
+
+  fetchNext() {
+    const { topicsParams } = this.data
+    this.setData({
+      topicsParams: {
+        ...topicsParams,
+        page: (topicsParams.page += 1)
+      }
+    })
+    this.fetchTopics()
+  },
+  toggleTab(e) {
+    const { topicsParams } = this.data
+    this.setData({
+      topicsParams: {
+        ...topicsParams,
+        tab: e.target.id
+      }
+    })
+    this.fetchTopics(true)
   },
   onLoad: function() {
     this.fetchTopics()

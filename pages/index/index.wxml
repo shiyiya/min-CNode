@@ -1,4 +1,5 @@
-<view class="container">
+<view class="topics">
+  <!-- <navigation />  -->
   <!-- <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
@@ -11,10 +12,24 @@
   </view> -->
   <view class="nav">
     <block wx:for="{{navList}}" wx:key="id">
-      <view id="{{item.id}}" data-index="{{index}}" class="nav-item" hover-class="active" catchtap="">
+      <view id="{{item.id}}" class="nav-item  {{item.id == topicsParams.tab?'active':''}}}}" bindtap="toggleTab">
         {{item.title}}
       </view>
     </block>
   </view>
-  <!-- <TopicItem wx:for="{{topics}}" wx:key="" /> -->
+  <scroll-view class="scroll-topic-list" scroll-y="true" bindscrolltolower="fetchNext">
+    <view class="topic-list">
+      <navigator class="topic-item" url="/pages/detail/detail?id={{item.id}}" wx:for="{{topics}}" wx:key="id">
+        <image class="avatar" src="{{item.author.avatar_url}}" />
+        <view class="title">{{item.title}}</view>
+        <view class="time">{{item.create_at}}</view>
+        <view class="meta">
+          <text class="tag top" wx:if="{{item.top}}">top</text>
+          <text class="tag good" wx:elif="{{item.good}}">good</text>
+          <text class="{{item.tab}} {{'tag'}}" wx:elif="{{item.tab}}">{{item.tab}}</text>
+          <text>{{item.visit_count}} / {{item.reply_count}}</text>
+        </view>
+      </navigator>
+    </view>
+  </scroll-view>
 </view>

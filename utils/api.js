@@ -13,7 +13,6 @@ const UP_REPLAY = id => `/reply/${id}/ups`
 const USER_COLLECT_TOPIC = name => `/topic_collect/${name}`
 
 function fetchTopics(params) {
-  console.log(getApp().globalData)
   return _fetch.get(TOPICS, params)
 }
 

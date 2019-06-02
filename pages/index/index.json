@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "TopicItem": "../../components/TopicItem/TopicItem"
+    "navigation": "../../components/custom-navigation/custom-navigation"
   },
-  "enablePullDownRefresh": true
+  "window":{
+    "navigationStyle":"custom"
+  }
 }

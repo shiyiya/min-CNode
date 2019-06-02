@@ -1,0 +1,11 @@
+<view class='navigation' style="height:{{height}}px">
+    <view class="navigation-wrap">
+        <view class='navigation-left'>
+            <view wx:if="{{back==1}}" class='navigation-left__back' bindtap='navigationBack'></view>
+            <view wx:if="{{home==2}}" class='navigation-left__home' bindtap='navigation2Home'></view>
+        </view>
+        <view class='navigation-title'>
+            <view class='navigation-title__text'>im title.!!</view>
+        </view>
+    </view>
+</view>
