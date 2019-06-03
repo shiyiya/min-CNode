@@ -1,66 +1,44 @@
-// pages/topics/topics.js
+import { fetchTopic } from '../../utils/api'
+import { howLongAge } from '../../utils/util'
+
+const app = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    rawTopic: {},
+    topic: {}
+  },
+  onLoad: function(options) {
+    fetchTopic(/* '5cefa26852ccb64168ba8f11' */ options.id)
+      .then(result => {
+        result.data.create_at = howLongAge(new Date(result.data.create_at))
+        result.data.replies = result.data.replies.map(r => {
+          r.create_at = howLongAge(new Date(r.create_at))
+          r.content = app.towxml.toJson(r.content, 'markdown')
+          return r
+        })
 
+        this.setData({
+          rawTopic: result.data,
+          topic: app.towxml.toJson(result.data.content, 'markdown')
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onReady: function() {},
 
-  },
+  onShow: function() {},
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  onHide: function() {},
 
-  },
+  onUnload: function() {},
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  onPullDownRefresh: function() {},
 
-  },
+  onReachBottom: function() {},
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  onShareAppMessage: function() {}
 })

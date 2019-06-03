@@ -1,2 +1,31 @@
-<!--pages/topics/topics.wxml-->
-<text>pages/topics/topics.wxml</text>
+<import src="../../towxml/entry.wxml" />
+<view class="topic-header">
+    <text class="topic__title">{{rawTopic.title}}</text>
+    <view class="topic-meta meta">
+        <image class="avatar" src="{{rawTopic.author.avatar_url}}" />
+        <text class="meta__item">{{rawTopic.author.loginname}}</text>
+        <text class="meta__item">{{rawTopic.create_at}}</text>
+        <text class="meta__item">{{rawTopic.tab}}</text>
+        <text class="meta__item">{{rawTopic.visit_count}}/{{rawTopic.reply_count}}</text>
+    </view>
+</view>
+<view class="topic-main">
+    <template is="entry" data="{{...topic}}" />
+</view>
+<view class="topic-comments">
+    <view class="topic-comments__title">{{rawTopic.reply_count}} 条评论</view>
+    <view class="topic-comment-list">
+        <block wx:for="{{rawTopic.replies}}" wx:key="id">
+            <view class="topic-comment-item">
+                <view class="topic-comment__item meta">
+                    <image class="avatar" src="{{item.author.avatar_url}}" />
+                    <text class="meta__item">{{item.author.loginname}}</text>
+                    <text class="meta__item">{{item.create_at}}</text>
+                </view>
+                <view class="topic-comment__content">
+                    <template is="entry" data="{{...item.content}}" />
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

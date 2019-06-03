@@ -7,7 +7,7 @@ const DE_COLLECT_TOPIC = '/topic_collect/de_collect'
 const VALID_ACCESSTOKEN = '/accesstoken'
 
 // dynamic api
-const TOPIC = id => `/topic/${id}`
+const TOPIC = id => `/topic/${id}?mdrender=false`
 const USER_INFO = name => `/user/${name}`
 const UP_REPLAY = id => `/reply/${id}/ups`
 const USER_COLLECT_TOPIC = name => `/topic_collect/${name}`

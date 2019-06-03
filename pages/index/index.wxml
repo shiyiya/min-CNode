@@ -19,7 +19,7 @@
   </view>
   <scroll-view class="scroll-topic-list" scroll-y="true" bindscrolltolower="fetchNext">
     <view class="topic-list">
-      <navigator class="topic-item" url="/pages/detail/detail?id={{item.id}}" wx:for="{{topics}}" wx:key="id">
+      <navigator class="topic-item" url="/pages/topic/topic?id={{item.id}}" wx:for="{{topics}}" wx:key="id">
         <image class="avatar" src="{{item.author.avatar_url}}" />
         <view class="title">{{item.title}}</view>
         <view class="time">{{item.create_at}}</view>

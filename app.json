@@ -1,7 +1,8 @@
 {
   "pages": [
+    
     "pages/index/index",
-    "pages/topic/topic",
+"pages/topic/topic",
     "pages/detail/detail",
     "pages/login/login",
     "pages/logs/logs"
@@ -19,7 +20,7 @@
         "selectedIconPath": "asserts/tabar/CNode-selected.png"
       },
       {
-        "pagePath": "pages/topic/topic",
+        "pagePath": "pages/logs/logs",
         "text": "我的",
         "iconPath": "asserts/tabar/user.png",
         "selectedIconPath": "asserts/tabar/user-selected.png"
@@ -32,6 +33,6 @@
     "navigationBarTitleText": "min-CNode",
     "navigationBarTextStyle": "white"
   },
- 
+
   "sitemapLocation": "sitemap.json"
 }

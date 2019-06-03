@@ -1,8 +1,5 @@
 {
   "usingComponents": {
     "navigation": "../../components/custom-navigation/custom-navigation"
-  },
-  "window":{
-    "navigationStyle":"custom"
   }
 }
