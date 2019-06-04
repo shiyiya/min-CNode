@@ -1,5 +1,5 @@
 <view class="topics">
-  <!-- <navigation />  -->
+  <!-- <navigation /> -->
   <!-- <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
@@ -12,7 +12,7 @@
   </view> -->
   <view class="nav">
     <block wx:for="{{navList}}" wx:key="id">
-      <view id="{{item.id}}" class="nav-item  {{item.id == topicsParams.tab?'active':''}}}}" bindtap="toggleTab">
+      <view id="{{item.id}}" class="nav-item {{item.id == topicsParams.tab?'active':''}}}}" bindtap="toggleTab">
         {{item.title}}
       </view>
     </block>

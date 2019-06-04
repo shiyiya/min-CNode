@@ -22,6 +22,15 @@ const fetchSuccFn = (resolve, reject, res) => {
   reject(res)
 }
 
+const fetCatchFn = err =>
+  wx.showToast({
+    title: err.data.error_msg,
+    icon: 'none',
+    image: '../asserts/fail.png',
+    duration: 2000,
+    mask: true
+  })
+
 export const _fetch = {
   get(url, params = '') {
     if (typeof params === 'object' && Object.keys(params).length) {
@@ -37,7 +46,7 @@ export const _fetch = {
         },
         fail: reject
       })
-    })
+    }).catch(fetCatchFn)
   },
   post(url, params, ...options) {
     return new Promise((resolve, reject) => {
@@ -53,7 +62,7 @@ export const _fetch = {
         },
         fail: reject
       })
-    })
+    }).catch(fetCatchFn)
   }
 }
 

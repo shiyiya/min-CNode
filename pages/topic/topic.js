@@ -23,22 +23,5 @@ Page({
           topic: app.towxml.toJson(result.data.content, 'markdown')
         })
       })
-      .catch(err => {
-        console.log(err)
-      })
-  },
-
-  onReady: function() {},
-
-  onShow: function() {},
-
-  onHide: function() {},
-
-  onUnload: function() {},
-
-  onPullDownRefresh: function() {},
-
-  onReachBottom: function() {},
-
-  onShareAppMessage: function() {}
+  }
 })

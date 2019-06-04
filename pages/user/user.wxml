@@ -1,0 +1,20 @@
+<template name="recentCard">
+  <view class="recent">
+    <view class="recent-tag">{{title}}</view>
+    <navigator url="/pages/topic/topic?id={{item.id}}" class="recent-content" wx:for="{{data}}" wx:key="id">
+      {{item.title}}
+    </navigator>
+  </view>
+</template>
+<view class="">
+  <view class="user">
+    <image class="avatar" src="{{userInfo.avatar_url}}" />
+    <view class="user-meta">
+      <view>用户名：{{userInfo.loginname}}</view>
+      <view>用户积分：{{userInfo.score}}</view>
+      <view>创建时间：{{userInfo.create_at}}</view>
+    </view>
+  </view>
+  <template is="recentCard" data="{{ ...{title: '最近创建的话题'},...{data:userInfo.recent_topics} }}" />
+  <template is="recentCard" data="{{ ...{title: '最近参与的话题'},...{data:userInfo.recent_replies} }}" />
+</view>

@@ -1,0 +1,47 @@
+page {
+  background-color: #eee;
+  font-size: 30rpx;
+}
+
+.user,
+.recent {
+  background-color: #fff;
+}
+.user {
+  padding: 15rpx;
+  margin: 20rpx;
+
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  border-radius: 8rpx;
+  line-height: 2;
+}
+
+.user .avatar {
+  height: 120rpx;
+  width: 120rpx;
+  margin: 0rpx 45rpx;
+  border-radius: 66%;
+  border: 1px solid #000;
+  float: left;
+}
+
+.recent {
+  padding: 15rpx;
+  margin: 20rpx;
+}
+
+.recent-tag {
+  padding: 15rpx;
+  margin: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+
+.recent-content {
+  padding: 15rpx;
+  margin: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

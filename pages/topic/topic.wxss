@@ -20,9 +20,9 @@ page {
   padding-top: 0;
 }
 
-.topic-main{
-    margin: 20rpx 0;
-    padding: 10rpx;
+.topic-main {
+  margin: 20rpx 0;
+  padding: 10rpx;
 }
 
 .topic-header {
@@ -39,6 +39,9 @@ page {
   color: #777;
   margin: 20rpx 0;
   font-size: 30rpx;
+}
+.meta .author {
+  display: inline;
 }
 .meta .avatar {
   float: left;
@@ -63,6 +66,6 @@ page {
   border-bottom: 1rpx solid #ccc;
 }
 
-.topic-comment__content .h2w__main{
-    margin: 0
+.topic-comment__content .h2w__main {
+  margin: 0;
 }
