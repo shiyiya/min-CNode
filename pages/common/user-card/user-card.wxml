@@ -1,0 +1,15 @@
+<template name="userCard">
+    <view class="user">
+        <block wx:if="{{isLogin}}">
+            <image class="avatar" src="{{userInfo.avatar_url}}" />
+            <view class="user-meta">
+                <view>用户名：{{userInfo.loginname}}</view>
+                <view>用户积分：{{userInfo.score}}</view>
+                <view>创建时间：{{userInfo.create_at}}</view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="login">Please Login</view>
+        </block>
+    </view>
+</template>

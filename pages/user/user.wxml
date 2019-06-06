@@ -1,20 +1,18 @@
 <template name="recentCard">
   <view class="recent">
     <view class="recent-tag">{{title}}</view>
-    <navigator url="/pages/topic/topic?id={{item.id}}" class="recent-content" wx:for="{{data}}" wx:key="id">
-      {{item.title}}
-    </navigator>
+    <block wx:if="{{data[0] && data[0].id}}">
+      <navigator url="/pages/topic/topic?id={{item.id}}" class="recent-content" wx:for="{{data}}" wx:key="id">
+        {{item.title}}
+      </navigator>
+    </block>
+    <view wx:else class="recent-content">No Content.</view>
   </view>
 </template>
+<import src="../common/user-card/user-card.wxml" />
 <view class="">
-  <view class="user">
-    <image class="avatar" src="{{userInfo.avatar_url}}" />
-    <view class="user-meta">
-      <view>用户名：{{userInfo.loginname}}</view>
-      <view>用户积分：{{userInfo.score}}</view>
-      <view>创建时间：{{userInfo.create_at}}</view>
-    </view>
-  </view>
+  <template is="userCard" data="{{ ...{userInfo: userInfo, isLogin: true} }}"></template>
   <template is="recentCard" data="{{ ...{title: '最近创建的话题'},...{data:userInfo.recent_topics} }}" />
   <template is="recentCard" data="{{ ...{title: '最近参与的话题'},...{data:userInfo.recent_replies} }}" />
+  <template is="recentCard" data="{{ ...{title: '最近收藏的话题'},...{data:userCollectTopic} }}" />
 </view>

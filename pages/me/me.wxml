@@ -1,0 +1,21 @@
+<import src="../common/user-card/user-card.wxml" />
+<view class="me">
+    <template is="userCard" data="{{ ...{ userInfo: userInfo, isLogin: isLogin } }}"></template>
+    <view class="me-login" wx:if="{{!isLogin}}">
+        <view bindtap="loginByQR" class="login-item" style="background: rgb(255, 100, 131)">
+            扫码登陆
+        </view>
+        <view bindtap="loginByToken" class="login-item" style="background: rgb(106, 90, 205)">
+            密钥登陆
+        </view>
+        <view bindtap="loginByToken" class="login-item" style="background-color: #24292e;">
+            GitHub登陆
+        </view>
+    </view>
+    <view class="user-action">
+        <navigator url="{{item.url}}" wx:for="{{actionsMap}}" wx:key="id" class="action__item">
+            {{item.title}}
+            <image src="../../asserts/rarrow.png" />
+        </navigator>
+    </view>
+</view>

@@ -1,19 +1,25 @@
-import { fetchUserInfo } from '../../utils/api'
+import { fetchUserInfo, fetchUserCollectTopic } from '../../utils/api'
 import { formatTime } from '../../utils/util'
 
 Page({
   data: {
-    userInfo: {}
+    userInfo: {},
+    userCollectTopic: []
   },
   onLoad: function(options) {
     console.log(options)
     wx.setNavigationBarTitle({
       title: options.loginname || 'User Info'
     })
-    fetchUserInfo(options.loginname).then(res => {
-      res.data.create_at = formatTime(new Date(res.data.create_at))
+
+    Promise.all([
+      fetchUserInfo(options.loginname),
+      fetchUserCollectTopic(options.loginname)
+    ]).then(([userInfo, userCollectTopic]) => {
+      userInfo.data.create_at = formatTime(new Date(userInfo.data.create_at))
       this.setData({
-        userInfo: res.data
+        userInfo: userInfo.data,
+        userCollectTopic: userCollectTopic.data
       })
     })
   }

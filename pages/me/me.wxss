@@ -1,0 +1,46 @@
+@import '../common/user-card/user-card.wxss';
+
+page {
+  background-color: #eee;
+  font-size: 30rpx;
+}
+
+.user-action{
+  background-color: #fff;
+}
+
+.me-login {
+  display: flex;
+  margin: 20rpx;
+}
+
+.me-login .login-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 20rpx;
+  margin: 20rpx;
+  flex: 1;
+  background-color: #fff;
+  border-radius: 8rpx;
+}
+
+.user-action{
+  padding: 30rpx;
+}
+
+.action__item{
+  border-bottom: 1px solid #eee;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content:  space-between
+}
+
+.action__item image{
+  height: 20rpx;
+  width: 20rpx;
+  float: right;
+  vertical-align: center;
+}

@@ -22,9 +22,9 @@ const fetchSuccFn = (resolve, reject, res) => {
   reject(res)
 }
 
-const fetCatchFn = err =>
+export const fetCatchFn = err =>
   wx.showToast({
-    title: err.data.error_msg,
+    title: (err.data && err.data.error_msg) || err.errMsg,
     icon: 'none',
     image: '../asserts/fail.png',
     duration: 2000,

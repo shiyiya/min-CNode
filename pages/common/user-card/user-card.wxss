@@ -1,0 +1,25 @@
+.user {
+    background-color: #fff;
+    padding: 15rpx;
+    margin: 20rpx;
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+    border-radius: 8rpx;
+    line-height: 2;
+  }
+  
+  .user .avatar {
+    height: 120rpx;
+    width: 120rpx;
+    margin: 0rpx 45rpx;
+    border-radius: 66%;
+    border: 1px solid #000;
+    float: left;
+  }
+
+  .user .login{
+      margin: 0 auto;
+      font-size: 45rpx;
+      color: #999;
+  }

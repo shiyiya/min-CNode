@@ -1,35 +1,37 @@
 <import src="../../towxml/entry.wxml" />
-<view class="topic-header">
-    <text class="topic__title">{{rawTopic.title}}</text>
-    <view class="topic-meta meta">
-        <navigator class="author" url="/pages/user/user?loginname={{rawTopic.author.loginname}}">
-            <image class="avatar" src="{{rawTopic.author.avatar_url}}" />
-            <text class="meta__item">{{rawTopic.author.loginname}}</text>
-        </navigator>
-        <text class="meta__item">{{rawTopic.create_at}}</text>
-        <text class="meta__item">{{rawTopic.tab}}</text>
-        <text class="meta__item">{{rawTopic.visit_count}}/{{rawTopic.reply_count}}</text>
+<view wx:if="{{rendered}}">
+    <view class="topic-header">
+        <text class="topic__title">{{rawTopic.title}}</text>
+        <view class="topic-meta meta">
+            <navigator class="author" url="/pages/user/user?loginname={{rawTopic.author.loginname}}">
+                <image class="avatar" src="{{rawTopic.author.avatar_url}}" />
+                <text class="meta__item">{{rawTopic.author.loginname}}</text>
+            </navigator>
+            <text class="meta__item">{{rawTopic.create_at}}</text>
+            <text class="meta__item">{{rawTopic.tab}}</text>
+            <text class="meta__item">{{rawTopic.visit_count}}/{{rawTopic.reply_count}}</text>
+        </view>
     </view>
-</view>
-<view class="topic-main">
-    <template is="entry" data="{{...topic}}" />
-</view>
-<view class="topic-comments">
-    <view class="topic-comments__title">{{rawTopic.reply_count}} 条评论</view>
-    <view class="topic-comment-list">
-        <block wx:for="{{rawTopic.replies}}" wx:key="id">
-            <view class="topic-comment-item">
-                <view class="topic-comment__item meta">
-                    <navigator class="author" url="/pages/user/user?loginname={{item.author.loginname}}">
-                        <image class="avatar" src="{{item.author.avatar_url}}" />
-                        <text class="meta__item">{{item.author.loginname}}</text>
-                    </navigator>
-                    <text class="meta__item">{{item.create_at}}</text>
+    <view class="topic-main">
+        <template is="entry" data="{{...topic}}" />
+    </view>
+    <view class="topic-comments">
+        <view class="topic-comments__title">{{rawTopic.reply_count}} 条评论</view>
+        <view class="topic-comment-list">
+            <block wx:for="{{rawTopic.replies}}" wx:key="id">
+                <view class="topic-comment-item">
+                    <view class="topic-comment__item meta">
+                        <navigator class="author" url="/pages/user/user?loginname={{item.author.loginname}}">
+                            <image class="avatar" src="{{item.author.avatar_url}}" />
+                            <text class="meta__item">{{item.author.loginname}}</text>
+                        </navigator>
+                        <text class="meta__item">{{item.create_at}}</text>
+                    </view>
+                    <view class="topic-comment__content">
+                        <template is="entry" data="{{...item.content}}" />
+                    </view>
                 </view>
-                <view class="topic-comment__content">
-                    <template is="entry" data="{{...item.content}}" />
-                </view>
-            </view>
-        </block>
+            </block>
+        </view>
     </view>
 </view>
