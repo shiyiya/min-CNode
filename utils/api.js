@@ -1,4 +1,13 @@
 import { _fetch } from './wx-utils'
+export * from './off-api'
+export const TABS = [
+  { id: 'all', title: '全部' },
+  { id: 'good', title: '精华' },
+  { id: 'share', title: '分享' },
+  { id: 'ask', title: '问答' },
+  { id: 'job', title: '招聘' },
+  { id: 'dev', title: '测试' }
+]
 
 export const HOST = 'https://cnodejs.org/api/v1'
 const TOPICS = '/topics'

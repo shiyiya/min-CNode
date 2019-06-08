@@ -1,0 +1,14 @@
+<view class="create">
+    <!-- <form bindsubmit="poi" bindreset="formReset">
+        <input type="text" placeholder="type the topic title" id="title" bindinput="type" />
+        <radio-group name="radio-group" id="tab" bindchange="type">
+            <label wx:for="{{tabList}}" wx:key="item.id">
+                <radio value="{{item.id}}" />
+                {{item.title}}
+            </label>
+        </radio-group>
+        <textarea name="content" id="content" cols="30" rows="10" id="content" bindinput="type"></textarea>
+        <button form-type="submit">Poi</button>
+    </form> -->
+    <text>off</text>
+</view>

@@ -6,14 +6,15 @@ const app = getApp()
 Page({
   data: {
     userInfo: {},
+    id: 0,
     actionsMap: [
       {
         title: '发表帖子',
-        url: ''
+        url: '' /*/pages/create/create*/
       },
       {
         title: '我的贴子',
-        url: ''
+        url: `/pages/user/user?loginname=`
       },
       {
         title: '消息中心',
@@ -27,9 +28,14 @@ Page({
     isLogin: false
   },
   onLoad: function() {
-    const userInfo = app.globalData.userInfo
+    const userInfo = wx.getStorageSync('userInfo')
+
     if (userInfo && userInfo.id) {
-      this.setData({ isLogin: true })
+      this.setData({
+        isLogin: true,
+        userInfo,
+        'actionsMap[1].url': `/pages/user/user?loginname=${userInfo.loginname}`
+      })
     }
   },
   loginByQR() {
@@ -44,21 +50,25 @@ Page({
       }
     })
   },
-  loginByToken() {
-    return validToken('abeec67b-1650-4541-abc9-c1aff19c8701').then(res => {
-      console.log(res)
-      this.getUserInfo(res.loginname)
-    })
+  loginByToken(token) {
+    return validToken(token /* 'abeec67b-1650-4541-abc9-c1aff19c8701' */).then(
+      res => {
+        this.setData({
+          id: token
+        })
+        this.getUserInfo(res.loginname)
+      }
+    )
   },
   getUserInfo(name) {
     fetchUserInfo(name).then(res => {
-      console.log(res)
       res.data.create_at = formatTime(new Date(res.data.create_at))
-      app.globalData.userInfo = res.data
       this.setData({
         userInfo: res.data,
         isLogin: true
       })
+      const { id, userInfo } = this.data
+      wx.setStorageSync('userInfo', { id, ...userInfo })
       console.log(this.data)
     })
   }

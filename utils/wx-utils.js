@@ -48,7 +48,7 @@ export const _fetch = {
       })
     }).catch(fetCatchFn)
   },
-  post(url, params, ...options) {
+  post(url, params, options) {
     return new Promise((resolve, reject) => {
       wxLoading()
       wx.request({

@@ -1,17 +1,11 @@
-import { fetchTopics } from '../../utils/api'
+import { fetchTopics, TABS } from '../../utils/api'
 import { howLongAge } from '../../utils/util'
 
 const app = getApp()
 
 Page({
   data: {
-    navList: [
-      { id: 'all', title: '全部' },
-      { id: 'good', title: '精华' },
-      { id: 'share', title: '分享' },
-      { id: 'ask', title: '问答' },
-      { id: 'job', title: '招聘' }
-    ],
+    navList: TABS,
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),

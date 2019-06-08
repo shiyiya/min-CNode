@@ -1,7 +1,9 @@
 {
-  "pages": [ "pages/me/me",
+  "pages": [
     "pages/index/index",
     "pages/topic/topic",
+    "pages/me/me",
+    "pages/create/create",
     "pages/user/user",
 
     "pages/logs/logs",

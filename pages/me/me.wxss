@@ -27,7 +27,7 @@ page {
 }
 
 .user-action{
-  padding: 30rpx;
+  padding: 10rpx 30rpx 30rpx;
 }
 
 .action__item{
